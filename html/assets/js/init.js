@@ -5,9 +5,9 @@ const open = (data) => {
   $('#dob').text(data.dateofbirth);
   $('#signature').text(data.name);
 
-  $('#id-card').css('background', 'url(assets/images/lspd.png)');
+  $('#gov-card').css('background', 'url(assets/images/government.png)');
 
-  $('#id-card').show();
+  $('#gov-card').show();
 }
 
 const close = () => {
@@ -16,7 +16,7 @@ const close = () => {
   $('#height').text('');
   $('#signature').text('');
   $('#sex').text('');
-  $('#id-card').hide();
+  $('#gov-card').hide();
   $('#licenses').html('');
 }
 

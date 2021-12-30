@@ -8,8 +8,8 @@ local plate_net = nil
 
 local open = false
 
-RegisterNetEvent('badge:open')
-AddEventHandler('badge:open', function( data, type )
+RegisterNetEvent('govbadge:open')
+AddEventHandler('govbadge:open', function( data, type )
 	open = true
 	SendNUIMessage({
 		action = "open",
@@ -37,16 +37,16 @@ Citizen.CreateThread(function()
 	end
 end)
 
-RegisterNetEvent('showbadge')
-AddEventHandler('showbadge', function()
+RegisterNetEvent('showgovbadge')
+AddEventHandler('showgovbadge', function()
 	local player, distance = QBCore.Functions.GetClosestPlayer()
 	if distance ~= -1 and distance <= 2.0 then
-		TriggerServerEvent('badge:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(player))
-        TriggerServerEvent('badge:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(PlayerId()))
+		TriggerServerEvent('govbadge:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(player))
+        TriggerServerEvent('govbadge:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(PlayerId()))
 		DeleteEntity(plate_net)
 		DeleteEntity(NetToObj(plate_net))
 	else 
-		TriggerServerEvent('badge:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(PlayerId()))
+		TriggerServerEvent('govbadge:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(PlayerId()))
 		DeleteEntity(plate_net)
 		DeleteEntity(NetToObj(plate_net))
 	end
@@ -82,10 +82,10 @@ function startAnim()
     plate_net = nil
 end
 
-RegisterNetEvent('badge:openPD')
-AddEventHandler('badge:openPD', function()
-	TriggerEvent('showbadge')
-	QBCore.Functions.Progressbar("search_register", "Showing Badge", 3500, false, true, {disableMovement = true,
+RegisterNetEvent('govbadge:openGOV')
+AddEventHandler('govbadge:openGOV', function()
+	TriggerEvent('showgovbadge')
+	QBCore.Functions.Progressbar("search_register", "Showing Government ID", 4000, false, true, {disableMovement = true,
 	disableCarMovement = true,
 	disableMouse = false,
 	disableCombat = true,
@@ -102,8 +102,8 @@ function loadAnimDict( dict )
     end
 end
 
-RegisterNetEvent('badge:shot')
-AddEventHandler('badge:shot', function(playerID)
+RegisterNetEvent('govbadge:shot')
+AddEventHandler('govbadge:shot', function(playerID)
 	local posx, posy = 0, 0.26
 	local width, height = 0.07, 0.14
 	local x, y = GetActiveScreenResolution()

@@ -1,7 +1,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-RegisterServerEvent('badge:open')
-AddEventHandler('badge:open', function(ID, targetID, type)
+RegisterServerEvent('govbadge:open')
+AddEventHandler('govbadge:open', function(ID, targetID, type)
 	local Player = QBCore.Functions.GetPlayer(ID)
 
 	local data = {
@@ -9,10 +9,10 @@ AddEventHandler('badge:open', function(ID, targetID, type)
 		dob = Player.PlayerData.charinfo.dob
 	}
 
-	TriggerClientEvent('badge:open', targetID, data)
-	TriggerClientEvent( 'badge:shot', targetID, source )
+	TriggerClientEvent('govbadge:open', targetID, data)
+	TriggerClientEvent( 'govbadge:shot', targetID, source )
 end)
 
-QBCore.Functions.CreateUseableItem('specialbadge', function(source, item)
-    TriggerClientEvent('badge:openPD', source, true)
+QBCore.Functions.CreateUseableItem('govbadge', function(source, item)
+    TriggerClientEvent('govbadge:openGOV', source, true)
 end)

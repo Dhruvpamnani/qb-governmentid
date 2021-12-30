@@ -18,7 +18,7 @@ p {
   font-size: 12px;
 }
 
-#id-card {
+#gov-card {
   position: relative;
   display: none;
   margin: 280px 1400px 0 0;
@@ -26,7 +26,7 @@ p {
   width: 485px;
   height: 383px;
   padding: 54px 17px 10px 144px;
-  background: url("../images/lspd.png");
+  background: url("../images/government.png");
 }
 
 img {
